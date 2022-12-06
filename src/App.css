@@ -1,0 +1,18 @@
+.content {
+    overflow-y: auto;
+    height: 95vh;
+}
+.header {
+    background-color: #00BCD4;
+}
+
+.menus {
+    height: 5vh;
+    display: flex;
+    justify-content:flex-start
+}
+li {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 30px;
+}

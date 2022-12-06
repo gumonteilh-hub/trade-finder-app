@@ -2,6 +2,8 @@ import '../App.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Pokemon } from '../model/Pokemon';
+import trade from '../assets/trade.svg'
+import { PokemonPicker } from './PokemonPicker';
 
 export function NewOffer() {
 
@@ -11,31 +13,19 @@ export function NewOffer() {
 
     const { id } = useParams();
 
-    useEffect(() => {
-        if (id !== '') {
-            fetch('http://localhost:8080/api/pokemon/' + id)
-                .then(res => res.json())
-                .then(
-                    (data) => {
-                        setLookingForPokemon(data)
-                    }
-                )
-                .catch((error) => {
-                    console.error(error);
-                });
-        }
-    }, []);
+    
 
     return <>
         <div className="flex">
-            <div className="flex-1	">
+            <div className="flex-1">
+                <PokemonPicker setPokemon={setLookingForPokemon} ></PokemonPicker>
                 {lookingForPokemon?.nomFrancais}
             </div>
-            <div className="flex-1	" >
-                test 2
+            <div className="flex-1" >
+                <img className='h-[10vh] m-auto' src={trade} />
             </div>
             <div className="flex-1">
-                test 3
+                <PokemonPicker data={lookingForPokemon}></PokemonPicker>
             </div>
         </div>
     </>

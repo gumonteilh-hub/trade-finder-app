@@ -2,10 +2,10 @@ export interface Pokemon {
     paldeaPokedexNumber: number;
     nationalPokedexNumber: number;
     imageUrl: string;
-    nomFrancais : string;
-    nomAnglais : string;
-    type1 : Type;
-    type2 : Type;
+    nomFrancais: string;
+    nomAnglais: string;
+    type1: Type;
+    type2: Type;
 }
 
 export enum Type {
