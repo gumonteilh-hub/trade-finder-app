@@ -16,3 +16,7 @@ li {
     margin-bottom: auto;
     margin-left: 30px;
 }
+
+.tradesvg {
+    transform: scaleY(-1);
+}

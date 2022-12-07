@@ -1,31 +1,39 @@
 import { Pokemon } from "../model/Pokemon"
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Props = {
     setPokemon: React.Dispatch<React.SetStateAction<any>>;
+    pokemons: Pokemon[]
 };
 
-export function PokemonPicker(callback: Props) {
+export function PokemonPicker({ setPokemon, pokemons }: Props) {
 
     const [query, setQuery] = useState<string>("");
 
+    const filteredPokemons = useMemo(() => {
+        if (query === '') {
+            return []
+        }
+        return pokemons.filter(pokemon => {
+            return pokemon.nomFrancais.toLowerCase().includes(query.toLowerCase()) || pokemon.nomAnglais.toLowerCase().includes(query.toLowerCase()) || pokemon.paldeaPokedexNumber.toString().toLowerCase().includes(query.toLowerCase()) || pokemon.nationalPokedexNumber.toString().toLowerCase().includes(query.toLowerCase())
+        })
+    }, [query, pokemons])
 
-    useEffect(() => {
-        fetch('http://localhost:8080/api/pokemon/' + query)
-            .then(res => res.json())
-            .then(
-                (data) => {
-                    callback.setPokemon(data)
-                }
-            )
-            .catch((error) => {
-                console.error(error);
-            });
+    const handlePokemonPicking = (pokemon : Pokemon) => {
+        setPokemon(pokemon);
+        setQuery("");
+    }
 
-    }, [query]);
     return <>
 
         <label>search</label>
-        <input className='border border-solid rounded-3xl' value={query} onChange={e => setQuery(e.target.value)} type="search"></input>
+        <input className='border border-solid rounded' value={query} onChange={e => setQuery(e.target.value)} type="search"></input>
+        <ul className="absolute bg-white">
+            {filteredPokemons?.map(pokemon => (
+                <li key={pokemon.nationalPokedexNumber}>
+                    <button className="flex border w-[20vw] hover:bg-slate-100" onClick={() => handlePokemonPicking(pokemon)}><strong className="m-auto">{pokemon.nomFrancais}</strong>  <img className="h-20 ml-auto" src={pokemon.imageUrl}></img></button>
+                </li>
+            ))}
+        </ul>
     </>
 }
