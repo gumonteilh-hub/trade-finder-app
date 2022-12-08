@@ -4,12 +4,14 @@
 }
 .header {
     background-color: #00BCD4;
+    width: 100vw;
 }
 
 .menus {
-    height: 5vh;
+    min-height: 5vh;
     display: flex;
-    justify-content:flex-start
+    justify-content:flex-start;
+    flex-wrap: wrap;
 }
 li {
     margin-top: auto;

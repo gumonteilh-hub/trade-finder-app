@@ -1,4 +1,5 @@
 import { Pokemon } from '../model/Pokemon'
+import { PokeType } from './PokeType';
 
 type Props = {
     pokemon: Pokemon
@@ -8,11 +9,12 @@ type Props = {
 export function PokemonInfo({ pokemon }: Props) {
 
     return <>
-        <div className='flex'>
+        <div className='flex flex-col lg:flex-row'>
             <div className='flex flex-col m-auto space-y-5'>
-                <p>Nom Français : {pokemon.nomFrancais}</p>
-                <p>Nom Anglais : {pokemon.nomAnglais}</p>
-                <p>Numéro pokedex national : #{pokemon.nationalPokedexNumber}</p>
+                <p>Nom : <strong>{pokemon.nomFrancais}</strong></p>
+                <p>Numéro pokedex national : <strong>#{pokemon.nationalPokedexNumber}</strong></p>
+                <PokeType poketype={pokemon.type1}></PokeType>
+                <PokeType poketype={pokemon.type2}></PokeType>
             </div>
 
             <img src={pokemon.imageUrl} alt="" />
