@@ -5,6 +5,7 @@ import { Pokemon } from '../model/Pokemon';
 import trade from '../assets/trade.svg'
 import { PokemonPicker } from './PokemonPicker';
 import { PokemonInfo } from './PokemonInfo';
+import { Offer } from '../model/Offer';
 
 export function NewOffer() {
 
@@ -35,7 +36,29 @@ export function NewOffer() {
 
     const { id } = useParams();
 
+    const postOffer = () => {
+        const offer = {
+            lookingForPokemon: lookingForPokemon,
+            forTradePokemon: forTradePokemon,
+            author: "guigui"
+        } as Offer
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(offer)
+        };
 
+        fetch('http://localhost:8080/api/offer/', requestOptions)
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    console.log(data)
+                }
+            )
+            .catch((error) => {
+                console.error(error);
+            });
+    }
 
     return <>
         <div className="flex">
@@ -57,8 +80,8 @@ export function NewOffer() {
                         }
                     </div>
                     <div className="flex-1 h-[95vh]" >
-                        <img className='h-[15vh] m-auto mt-[50%] tradesvg' src={trade} />
-                        <button className=''> Create offer</button>
+                        <img className='w-[30%] m-auto mt-[50%] tradesvg' src={trade} />
+                        <button onClick={postOffer} className=''> Create offer</button>
                     </div>
                     <div className="flex-1">
                         <h1>Looking for :</h1>
