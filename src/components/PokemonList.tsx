@@ -62,7 +62,11 @@ export function PokemonList() {
                                 <td className='border border-slate-300'><img src={pokemon.imageUrl}></img></td>
                                 <td className='border border-slate-300'>{pokemon.type1}</td>
                                 <td className='border border-slate-300'>{pokemon.type2}</td>
-                                <td className='border border-slate-300'><Link to={'/newOffer/'+ pokemon.nationalPokedexNumber}>Échange</Link></td>
+                                <td className='border border-slate-300'>
+                                    <Link to={'/newOffer/'+ pokemon.nationalPokedexNumber}>créer offre</Link>
+                                    <br/>
+                                    <Link to={'/offer/'+ pokemon.nationalPokedexNumber}>voir les offres</Link>    
+                                </td>
                             </tr>
                         })}
                     </tbody>

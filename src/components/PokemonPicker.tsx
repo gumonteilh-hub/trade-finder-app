@@ -25,7 +25,6 @@ export function PokemonPicker({ setPokemon, pokemons }: Props) {
     }
 
     return <>
-
         <label>search</label>
         <input className='border border-solid rounded' value={query} onChange={e => setQuery(e.target.value)} type="search"></input>
         <ul className="absolute bg-white">

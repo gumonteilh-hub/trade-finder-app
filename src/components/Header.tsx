@@ -13,7 +13,10 @@ export function Header() {
                         <Link to="/pokemons" >Pokemons</Link>
                     </li>
                     <li>
-                        <Link to="/newOffer" > New Offer</Link>
+                        <Link to="/offer" >Offers</Link>
+                    </li>
+                    <li>
+                        <Link to="/newOffer" >New Offer</Link>
                     </li>
                     <div className="ml-auto mr-[30px] flex">
                         <li>
