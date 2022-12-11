@@ -24,7 +24,7 @@ export function PokemonPicker({ setPokemon, pokemons }: Props) {
         setQuery("");
     }
 
-    return <>
+    return <div>
         <label>search</label>
         <input className='border border-solid rounded' value={query} onChange={e => setQuery(e.target.value)} type="search"></input>
         <ul className="absolute bg-white">
@@ -34,5 +34,5 @@ export function PokemonPicker({ setPokemon, pokemons }: Props) {
                 </li>
             ))}
         </ul>
-    </>
+    </div>
 }

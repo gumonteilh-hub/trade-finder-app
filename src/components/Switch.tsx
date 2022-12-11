@@ -2,7 +2,7 @@ import '../style/Switch.css'
 
 export function Switch() {
 
-    return (<>
+    return (<div className='flex'>
         <p></p>Looking for
         <label className='switch'>
 
@@ -11,5 +11,5 @@ export function Switch() {
 
         </label>
         <p>For trade</p>
-    </>)
+    </div>)
 }
