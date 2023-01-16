@@ -16,13 +16,14 @@ export function OfferList() {
 
     const { id } = useParams();
 
-    /*
+    
     useEffect(() => {
         if (id !== undefined) {
-            fetch('http://localhost:8080/api/offer/pokemon' + id)
+            fetch('http://localhost:8080/api/offer/pokemon/' + id)
                 .then(res => res.json())
                 .then(
                     (data) => {
+                        console.log("test 1 ")
                         setOfferList(data);
                     }
                 )
@@ -31,7 +32,23 @@ export function OfferList() {
                 });
         }
     }, [])
-*/
+
+    useEffect(() => {
+        if (pokemonFilter?.nationalPokedexNumber !== undefined) {
+            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber)
+                .then(res => res.json())
+                .then(
+                    (data) => {
+                        console.log("test 1 ")
+                        setOfferList(data);
+                    }
+                )
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+    }, [pokemonFilter])
+
     useEffect(() => {
         fetch('http://localhost:8080/api/pokemon/')
             .then(res => res.json())
@@ -58,34 +75,36 @@ export function OfferList() {
                 <p>Chargement</p>
                 :
                 <>
-                    <div className="flex h-[10vh] justify-around place-items-center">
+                    <div className="grid grid-cols-3 h-[10vh]">
                         <PokemonPicker pokemons={pokemonList} setPokemon={setPokemonFilter}></PokemonPicker>
-                        {pokemonFilter && pokemonFilter.paldeaPokedexNumber ? <PokemonInfo pokemon={pokemonFilter}></PokemonInfo> : <div></div>}
+                        <div>{pokemonFilter && pokemonFilter.paldeaPokedexNumber ? <PokemonInfo pokemon={pokemonFilter}></PokemonInfo> : <div></div>}</div>
                         <Switch></Switch>
                     </div>
-                    {offerList && offerList.length > 0 ?
-                        <table className='border-collapse border-spacing-2 border border-slate-500'>
-                            <thead>
-                                <tr>
-                                    <th className='border border-slate-300'>Looking for</th>
-                                    <th className='border border-slate-300'>For trade</th>
-                                    <th className='border border-slate-300'>author</th>
-                                    <th className='border border-slate-300'>actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {offerList.map((offer) => {
-                                    return <tr>
-                                        <th><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
-                                        <th><PokemonInfo pokemon={offer.forTradePokemon}></PokemonInfo></th>
-                                        <th>{offer.author}</th>
-                                        <th><button>view</button></th>
+                    <div className="mt-[7em] flex justify-center">
+                        {offerList && offerList.length > 0 ?
+                            <table className='border-separate border border-slate-500 table-auto '>
+                                <thead>
+                                    <tr>
+                                        <th className='border border-slate-300'>Looking for</th>
+                                        <th className='border border-slate-300'>For trade</th>
+                                        <th className='border border-slate-300'>author</th>
+                                        <th className='border border-slate-300'>actions</th>
                                     </tr>
-                                })}
-                            </tbody>
-                        </table>
-                        :
-                        <></>}
+                                </thead>
+                                <tbody>
+                                    {offerList.map((offer) => {
+                                        return <tr className="">
+                                            <th className='border border-slate-300'><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
+                                            <th className='border border-slate-300'><PokemonInfo pokemon={offer.forTradePokemon}></PokemonInfo></th>
+                                            <th className='border border-slate-300'>{offer.author}</th>
+                                            <th className='border border-slate-300'><button>view</button></th>
+                                        </tr>
+                                    })}
+                                </tbody>
+                            </table>
+                            :
+                            <></>}
+                    </div>
                 </>
         }
     </>

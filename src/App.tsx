@@ -17,6 +17,7 @@ function App() {
         <Route path='/newOffer/:id' element={<NewOffer />} />
         <Route path='/newOffer/' element={<NewOffer />} />
         <Route path='/offer/:id' element={<OfferList />} />
+        <Route path='/offer/' element={<OfferList />} />
       </Routes>
     </>
   )

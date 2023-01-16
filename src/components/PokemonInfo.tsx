@@ -9,7 +9,7 @@ type Props = {
 export function PokemonInfo({ pokemon }: Props) {
 
     return <>
-        <div className='flex flex-col lg:flex-row'>
+        <div className='flex flex-col lg:flex-row h-[10em] overflow-auto'>
             <div className='flex flex-col m-auto space-y-5'>
                 <p>Nom : <strong>{pokemon.nomFrancais}</strong></p>
                 <p>Numéro pokedex national : <strong>#{pokemon.nationalPokedexNumber}</strong></p>
@@ -19,7 +19,7 @@ export function PokemonInfo({ pokemon }: Props) {
                 </div>
             </div>
 
-            <img src={pokemon.imageUrl} alt={pokemon.nomFrancais} />
+            <img className='relative' src={pokemon.imageUrl} alt={pokemon.nomFrancais} />
 
         </div>
     </>
