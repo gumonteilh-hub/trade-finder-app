@@ -1,12 +1,16 @@
 import '../style/Switch.css'
 
-export function Switch() {
+type Props = {
+    onClick: React.Dispatch<React.SetStateAction<any>>;
+};
+
+export function Switch({onClick}: Props) {
 
     return (<div className='flex justify-center items-center'>
         <p></p>Looking for
         <label className='switch'>
 
-            <input type="checkbox"></input>
+            <input type="checkbox" onClick={(e) => onClick(e.currentTarget.value)} ></input>
             <span className='slider'></span>
 
         </label>

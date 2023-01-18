@@ -52,11 +52,13 @@ export function NewOffer() {
             .then(res => res.json())
             .then(
                 (data) => {
-                    console.log(data)
+                    setLookingForPokemon(undefined);
+                    setForTradePokemon(undefined);
+                    alert("Offer created")
                 }
             )
             .catch((error) => {
-                console.error(error);
+                alert(error.message);
             });
     }
 
@@ -81,7 +83,7 @@ export function NewOffer() {
                     </div>
                     <div className="flex-1 h-[95vh]" >
                         <img className='w-[30%] m-auto mt-[50%] tradesvg' src={trade} />
-                        <button onClick={postOffer} className=''> Create offer</button>
+                        <button disabled={lookingForPokemon == undefined || forTradePokemon == undefined} onClick={postOffer} className='newOfferButton'> Create offer</button>
                     </div>
                     <div className="flex-1">
                         <h1>Looking for :</h1>

@@ -22,3 +22,19 @@ li {
 .tradesvg {
     transform: scaleY(-1);
 }
+
+.newOfferButton {
+    width: 21vw;
+    height: 5em;
+    margin-top: 3em;
+    margin-left: 6vw;
+    border: solid;
+    border-radius: 1em;
+    background-color: #f6e652;
+    border-color: #9c5200;
+    
+}
+
+.newOfferButton:hover {
+    background-color: #f6bd20;
+}

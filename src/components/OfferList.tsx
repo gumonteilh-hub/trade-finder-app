@@ -13,6 +13,8 @@ export function OfferList() {
     const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [pokemonFilter, setPokemonFilter] = useState<Pokemon>();
+    // false = "looking for", true = forTrade
+    const [searchType, setSearchType] = useState<boolean>(false);
 
     const { id } = useParams();
 
@@ -35,7 +37,7 @@ export function OfferList() {
 
     useEffect(() => {
         if (pokemonFilter?.nationalPokedexNumber !== undefined) {
-            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber)
+            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + false)
                 .then(res => res.json())
                 .then(
                     (data) => {
@@ -78,7 +80,7 @@ export function OfferList() {
                     <div className="grid grid-cols-3 h-[10vh]">
                         <PokemonPicker pokemons={pokemonList} setPokemon={setPokemonFilter}></PokemonPicker>
                         <div>{pokemonFilter && pokemonFilter.paldeaPokedexNumber ? <PokemonInfo pokemon={pokemonFilter}></PokemonInfo> : <div></div>}</div>
-                        <Switch></Switch>
+                        <Switch onClick= {setSearchType}></Switch>
                     </div>
                     <div className="mt-[7em] flex justify-center">
                         {offerList && offerList.length > 0 ?
