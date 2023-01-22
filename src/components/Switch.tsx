@@ -10,7 +10,7 @@ export function Switch({onClick}: Props) {
         <p></p>Looking for
         <label className='switch'>
 
-            <input type="checkbox" onClick={(e) => onClick(e.currentTarget.value)} ></input>
+            <input type="checkbox" onClick={(e) => onClick(e.currentTarget.checked)}></input>
             <span className='slider'></span>
 
         </label>

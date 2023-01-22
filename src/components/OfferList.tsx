@@ -37,7 +37,7 @@ export function OfferList() {
 
     useEffect(() => {
         if (pokemonFilter?.nationalPokedexNumber !== undefined) {
-            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + false)
+            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + !searchType)
                 .then(res => res.json())
                 .then(
                     (data) => {
@@ -49,7 +49,7 @@ export function OfferList() {
                     console.error(error);
                 });
         }
-    }, [pokemonFilter])
+    }, [pokemonFilter, searchType])
 
     useEffect(() => {
         fetch('http://localhost:8080/api/pokemon/')
