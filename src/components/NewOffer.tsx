@@ -6,6 +6,8 @@ import trade from '../assets/trade.svg'
 import { PokemonPicker } from './PokemonPicker';
 import { PokemonInfo } from './PokemonInfo';
 import { Offer } from '../model/Offer';
+import { validateEmail } from '../utils';
+
 
 export function NewOffer() {
 
@@ -37,29 +39,36 @@ export function NewOffer() {
     const { id } = useParams();
 
     const postOffer = () => {
-        const offer = {
-            lookingForPokemon: lookingForPokemon,
-            forTradePokemon: forTradePokemon,
-            author: "guigui"
-        } as Offer
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(offer)
-        };
+        const email = sessionStorage.getItem("email");
 
-        fetch('http://localhost:8080/api/offer/', requestOptions)
-            .then(res => res.json())
-            .then(
-                (data) => {
-                    setLookingForPokemon(undefined);
-                    setForTradePokemon(undefined);
-                    alert("Offer created")
-                }
-            )
-            .catch((error) => {
-                alert(error.message);
-            });
+        if (email != null && validateEmail(email)) {
+            const offer = {
+                lookingForPokemon: lookingForPokemon,
+                forTradePokemon: forTradePokemon,
+                author: email
+            } as Offer
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(offer)
+            };
+
+            fetch('http://localhost:8080/api/offer/', requestOptions)
+                .then(res => res.json())
+                .then(
+                    (data) => {
+                        setLookingForPokemon(undefined);
+                        setForTradePokemon(undefined);
+                        alert("Offre créée")
+                    }
+                )
+                .catch((error) => {
+                    alert(error.message);
+                });
+        }
+        else {
+            alert("s'il-vous-plait connectez vous pour créer une offre");
+        }
     }
 
     return <>
