@@ -18,6 +18,12 @@ export function OfferList() {
 
     const { id } = useParams();
 
+    const sendEmail = (offer: Offer) => {
+        const subject = "Échange " + offer.forTradePokemon.nomFrancais + "/" + offer.lookingForPokemon.nomFrancais;
+        const body = "Bonjour, %0DJe souhaiterai échanger mon " + offer.lookingForPokemon.nomFrancais + " contre votre " + offer.forTradePokemon.nomFrancais + " ! %0DCordialement.";
+        window.open('mailto:'+ offer.author +'?subject=' + subject +'&body=' + body);
+    }
+
     
     useEffect(() => {
         if (id !== undefined) {
@@ -96,10 +102,13 @@ export function OfferList() {
                                 <tbody>
                                     {offerList.map((offer) => {
                                         return <tr className="">
-                                            <th className='border border-slate-300'><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
-                                            <th className='border border-slate-300'><PokemonInfo pokemon={offer.forTradePokemon}></PokemonInfo></th>
-                                            <th className='border border-slate-300'>{offer.author}</th>
-                                            <th className='border border-slate-300'><button>view</button></th>
+                                            <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
+                                            <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.forTradePokemon}></PokemonInfo></th>
+                                            <th className='p-5 border border-slate-300'>{offer.author} 
+                                                <br/> <br/> 
+                                                <button onClick={() => sendEmail(offer)}><strong><u>Contacter</u></strong></button> 
+                                            </th>
+                                            <th className='p-5 border border-slate-300'><button>view</button></th>
                                         </tr>
                                     })}
                                 </tbody>
