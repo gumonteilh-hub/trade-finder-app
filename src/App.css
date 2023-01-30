@@ -38,3 +38,19 @@ li {
 .newOfferButton:hover {
     background-color: #f6bd20;
 }
+
+.tooltipText {
+    position: absolute;
+    right: 5em;
+    top: 10em;
+    width: 30em;
+    background-color: white;
+    padding: 2em;
+    border: solid;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    visibility: hidden;
+}
+
+.tooltip:hover + .tooltipText {
+    visibility: visible;
+}

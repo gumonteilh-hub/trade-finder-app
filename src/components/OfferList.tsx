@@ -5,6 +5,7 @@ import { Pokemon } from "../model/Pokemon";
 import { PokemonInfo } from "./PokemonInfo";
 import { PokemonPicker } from "./PokemonPicker";
 import { Switch } from "./Switch";
+import questionMark from '../assets/question-circle-svgrepo-com-white.svg'
 
 
 export function OfferList() {
@@ -88,7 +89,14 @@ export function OfferList() {
                         <div>{pokemonFilter && pokemonFilter.paldeaPokedexNumber ? <PokemonInfo pokemon={pokemonFilter}></PokemonInfo> : <div></div>}</div>
                         <div className="flex justify-center items-center">
                             <Switch onClick={setSearchType}></Switch>
-                            
+                            <img className="ml-10 w-10 tooltip" title="test" src={questionMark} alt="question mark" />
+                            <p className="tooltipText">
+                                Si vous cherchez a obtenir un Pikachu, séléctionnez Pikachu dans la barre de recherche, 
+                                mettez le switch sur "Recevoir" et apparaitront les offres de gens cherchant a Envoyer un Pikachu. <br/>
+                                Les valeurs "Envoyer" et "Recevoir" sont basées sur votre point de vue, pas sur celui du créateur de l'offre 
+                                (Si vous voyez un Pokemon dans la colonne "Recevoir" c'est que la personne ayant créé l'offre cherche a l'"Envoyer")  
+                            </p> {//TODO - vraiment inverse les deux colonnes ainsi que le filtre de recherche pour bien avoir le comportement décris au dessus
+                            }
                         </div>
                     </div>
                     <div className="mt-[7em] flex justify-center">
