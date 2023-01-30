@@ -79,7 +79,7 @@ export function NewOffer() {
                 :
                 <>
                     <div className="flex-1">
-                        <h1>For trade :</h1>
+                        <h1>Envoyer :</h1>
                         <PokemonPicker setPokemon={setForTradePokemon} pokemons={pokemonList!}></PokemonPicker>
                         <br />
                         {
@@ -95,7 +95,7 @@ export function NewOffer() {
                         <button disabled={lookingForPokemon == undefined || forTradePokemon == undefined} onClick={postOffer} className='newOfferButton'> Create offer</button>
                     </div>
                     <div className="flex-1">
-                        <h1>Looking for :</h1>
+                        <h1>Recevoir :</h1>
                         <PokemonPicker setPokemon={setLookingForPokemon} pokemons={pokemonList!} ></PokemonPicker>
                         <br />
                         {

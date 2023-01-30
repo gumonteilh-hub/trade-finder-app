@@ -31,20 +31,20 @@ export function Header() {
             <nav>
                 <ul className='menus'>
                     <li>
-                        <Link to="/" >Home</Link>
+                        <Link to="/" >Accueil</Link>
                     </li>
                     <li>
                         <Link to="/pokemons" >Pokemons</Link>
                     </li>
                     <li>
-                        <Link to="/offer" >Offers</Link>
+                        <Link to="/offer" >Offres</Link>
                     </li>
                     <li>
-                        <Link to="/newOffer" >New Offer</Link>
+                        <Link to="/newOffer" >Nouvelle offre</Link>
                     </li>
                     <div className="m-auto mr-[30px] flex">
                         {isLoggedin == "" ?
-                            <button onClick={login}>se connecter</button>
+                            <button onClick={login}>Se connecter</button>
                             :
                             <span>{isLoggedin}</span>
 }

@@ -21,10 +21,10 @@ export function OfferList() {
     const sendEmail = (offer: Offer) => {
         const subject = "Échange " + offer.forTradePokemon.nomFrancais + "/" + offer.lookingForPokemon.nomFrancais;
         const body = "Bonjour, %0DJe souhaiterai échanger mon " + offer.lookingForPokemon.nomFrancais + " contre votre " + offer.forTradePokemon.nomFrancais + " ! %0DCordialement.";
-        window.open('mailto:'+ offer.author +'?subject=' + subject +'&body=' + body);
+        window.open('mailto:' + offer.author + '?subject=' + subject + '&body=' + body);
     }
 
-    
+
     useEffect(() => {
         if (id !== undefined) {
             fetch('http://localhost:8080/api/offer/pokemon/' + id)
@@ -86,17 +86,20 @@ export function OfferList() {
                     <div className="grid grid-cols-3 h-[10vh]">
                         <PokemonPicker pokemons={pokemonList} setPokemon={setPokemonFilter}></PokemonPicker>
                         <div>{pokemonFilter && pokemonFilter.paldeaPokedexNumber ? <PokemonInfo pokemon={pokemonFilter}></PokemonInfo> : <div></div>}</div>
-                        <Switch onClick= {setSearchType}></Switch>
+                        <div className="flex justify-center items-center">
+                            <Switch onClick={setSearchType}></Switch>
+                            
+                        </div>
                     </div>
                     <div className="mt-[7em] flex justify-center">
                         {offerList && offerList.length > 0 ?
                             <table className='border-separate border border-slate-500 table-auto '>
                                 <thead>
                                     <tr>
-                                        <th className='border border-slate-300'>Looking for</th>
-                                        <th className='border border-slate-300'>For trade</th>
-                                        <th className='border border-slate-300'>author</th>
-                                        <th className='border border-slate-300'>actions</th>
+                                        <th className='border border-slate-300'>Recevoir</th>
+                                        <th className='border border-slate-300'>Envoyer</th>
+                                        <th className='border border-slate-300'>Auteur</th>
+                                        <th className='border border-slate-300'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -104,11 +107,8 @@ export function OfferList() {
                                         return <tr className="">
                                             <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
                                             <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.forTradePokemon}></PokemonInfo></th>
-                                            <th className='p-5 border border-slate-300'>{offer.author} 
-                                                <br/> <br/> 
-                                                <button onClick={() => sendEmail(offer)}><strong><u>Contacter</u></strong></button> 
-                                            </th>
-                                            <th className='p-5 border border-slate-300'><button>view</button></th>
+                                            <th className='p-5 border border-slate-300'>{offer.author}</th>
+                                            <th className='p-5 border border-slate-300'><button onClick={() => sendEmail(offer)}><strong><u>Contacter</u></strong></button></th>
                                         </tr>
                                     })}
                                 </tbody>

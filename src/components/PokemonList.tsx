@@ -46,29 +46,30 @@ export function PokemonList() {
                     <table className=' border-collapse border-spacing-2 border border-slate-500'>
                         <thead>
                             <tr>
-                                <th className='border border-slate-300'> Numéro pokedex National</th>
-                                <th className='border border-slate-300'> Numéro pokedex régional</th>
-                                <th className='border border-slate-300'> Nom Français</th>
-                                <th className='border border-slate-300'> Nom Anglais</th>
-                                <th className='border border-slate-300'> image</th>
-                                <th className='border border-slate-300' colSpan={2}> Type</th>
-                                <th className='border border-slate-300'> Actions</th>
+                                <th className='p-1 border border-slate-300'> Numéro pokedex National</th>
+                                <th className='p-1 border border-slate-300'> Numéro pokedex régional</th>
+                                <th className='p-1 border border-slate-300'> Nom Français</th>
+                                <th className='p-1 border border-slate-300'> Nom Anglais</th>
+                                <th className='p-1 border border-slate-300'> image</th>
+                                <th className='p-1 border border-slate-300' colSpan={2}> Type</th>
+                                <th className='p-1 border border-slate-300'> Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredPokemons.map((pokemon) => {
                                 return <tr>
-                                    <td className='border border-slate-300'>{pokemon.nationalPokedexNumber}</td>
-                                    <td className='border border-slate-300'>{pokemon.paldeaPokedexNumber}</td>
-                                    <td className='border border-slate-300'>{pokemon.nomFrancais}</td>
-                                    <td className='border border-slate-300'>{pokemon.nomAnglais}</td>
-                                    <td className='border border-slate-300'><img src={pokemon.imageUrl}></img></td>
-                                    <td className='border border-slate-300'><PokeType poketype={pokemon.type1} ></PokeType></td>
-                                    <td className='border border-slate-300'><PokeType poketype={pokemon.type2} ></PokeType></td>
-                                    <td className='border border-slate-300'>
-                                        <Link to={'/newOffer/' + pokemon.nationalPokedexNumber}>créer offre</Link>
+                                    <td className='p-1 border border-slate-300'>{pokemon.nationalPokedexNumber}</td>
+                                    <td className='p-1 border border-slate-300'>{pokemon.paldeaPokedexNumber}</td>
+                                    <td className='p-1 border border-slate-300'>{pokemon.nomFrancais}</td>
+                                    <td className='p-1 border border-slate-300'>{pokemon.nomAnglais}</td>
+                                    <td className='p-1 border border-slate-300'><img src={pokemon.imageUrl}></img></td>
+                                    <td className='p-1 border border-slate-300'><PokeType poketype={pokemon.type1} ></PokeType></td>
+                                    <td className='p-1 border border-slate-300'><PokeType poketype={pokemon.type2} ></PokeType></td>
+                                    <td className='p-1 border border-slate-300'>
+                                        <Link to={'/newOffer/' + pokemon.nationalPokedexNumber}><u>créer offre</u></Link>
                                         <br />
-                                        <Link to={'/offer/' + pokemon.nationalPokedexNumber}>voir les offres</Link>
+                                        <br />
+                                        <Link to={'/offer/' + pokemon.nationalPokedexNumber}><u>voir les offres</u></Link>
                                     </td>
                                 </tr>
                             })}

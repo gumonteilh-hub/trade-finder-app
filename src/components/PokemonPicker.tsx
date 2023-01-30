@@ -1,5 +1,5 @@
 import { Pokemon } from "../model/Pokemon"
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 type Props = {
     setPokemon: React.Dispatch<React.SetStateAction<any>>;
@@ -25,7 +25,7 @@ export function PokemonPicker({ setPokemon, pokemons }: Props) {
     }
 
     return <div className="m-[3em]">
-        <label>search</label>
+        <label>Rechercher </label>
         <input className='border border-solid rounded' value={query} onChange={e => setQuery(e.target.value)} type="search"></input>
         <ul className="absolute bg-white">
             {filteredPokemons?.map(pokemon => (

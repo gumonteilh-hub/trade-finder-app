@@ -7,13 +7,13 @@ type Props = {
 export function Switch({onClick}: Props) {
 
     return (<div className='flex justify-center items-center'>
-        <p></p>Looking for
-        <label className='switch'>
+        <p>Recevoir</p>
+        <label className='m-2 switch'>
 
             <input type="checkbox" onClick={(e) => onClick(e.currentTarget.checked)}></input>
             <span className='slider'></span>
 
         </label>
-        <p>For trade</p>
+        <p>Envoyer </p>
     </div>)
 }
