@@ -44,7 +44,7 @@ export function OfferList() {
 
     useEffect(() => {
         if (pokemonFilter?.nationalPokedexNumber !== undefined) {
-            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + !searchType)
+            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + searchType)
                 .then(res => res.json())
                 .then(
                     (data) => {
@@ -95,8 +95,7 @@ export function OfferList() {
                                 mettez le switch sur "Recevoir" et apparaitront les offres de gens cherchant a Envoyer un Pikachu. <br/>
                                 Les valeurs "Envoyer" et "Recevoir" sont basées sur votre point de vue, pas sur celui du créateur de l'offre 
                                 (Si vous voyez un Pokemon dans la colonne "Recevoir" c'est que la personne ayant créé l'offre cherche a l'"Envoyer")  
-                            </p> {//TODO - vraiment inverse les deux colonnes ainsi que le filtre de recherche pour bien avoir le comportement décris au dessus
-                            }
+                            </p>
                         </div>
                     </div>
                     <div className="mt-[7em] flex justify-center">
@@ -113,8 +112,8 @@ export function OfferList() {
                                 <tbody>
                                     {offerList.map((offer) => {
                                         return <tr className="">
-                                            <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
                                             <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.forTradePokemon}></PokemonInfo></th>
+                                            <th className='p-5 border border-slate-300'><PokemonInfo pokemon={offer.lookingForPokemon}></PokemonInfo></th>
                                             <th className='p-5 border border-slate-300'>{offer.author}</th>
                                             <th className='p-5 border border-slate-300'><button onClick={() => sendEmail(offer)}><strong><u>Contacter</u></strong></button></th>
                                         </tr>

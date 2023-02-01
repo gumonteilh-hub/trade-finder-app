@@ -54,7 +54,7 @@ export function Header() {
                         {isLoggedin == "" ?
                             <button onClick={login}>Se connecter</button>
                             :
-                            <span>{isLoggedin}</span>
+                            <span className='my-auto'>{isLoggedin}</span>
 }
                     </div>
                 </ul>
