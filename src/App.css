@@ -2,17 +2,19 @@
     overflow-y: auto;
     height: 95vh;
 }
+
 .header {
     background-color: #00BCD4;
-    width: 100vw;
+    width: 100%;
 }
 
 .menus {
     min-height: 5vh;
     display: flex;
-    justify-content:flex-start;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
+
 li {
     margin-top: auto;
     margin-bottom: auto;
@@ -32,7 +34,7 @@ li {
     border-radius: 1em;
     background-color: #f6e652;
     border-color: #9c5200;
-    
+
 }
 
 .newOfferButton:hover {
@@ -61,6 +63,55 @@ li {
     width: 30em;
 }
 
-.tooltip:hover + .tooltipText {
+.tooltip:hover+.tooltipText {
     visibility: visible;
+}
+
+.pokeball-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.circle-black {
+    position: absolute;
+    border-radius: 50%;
+    background: #222224;
+    height: 24%;
+    width: 24%;
+    margin-top: 38%;
+    margin-left: 38%;
+}
+
+.circle-white {
+    position: absolute;
+    border-radius: 50%;
+    background: #f0f0f0;
+    height: 20%;
+    width: 20%;
+    margin-top: 40%;
+    margin-left: 40%;
+    aspect-ratio: 1;
+}
+
+.pokeball {
+    position: relative;
+    display: flex;
+    border-radius: 50%;
+    margin: 6vh auto 0 auto;
+    width: 50em;
+    aspect-ratio: 1;
+}
+
+.pokeball::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -8px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, #ee1515 0 45%, #222224 45% 55%, #f0f0f0 55% 100%);
 }
