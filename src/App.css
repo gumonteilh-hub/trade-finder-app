@@ -41,14 +41,24 @@ li {
 
 .tooltipText {
     position: absolute;
-    right: 5em;
-    top: 10em;
-    width: 30em;
     background-color: white;
     padding: 2em;
     border: solid;
+    z-index: 2;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     visibility: hidden;
+}
+
+.tooltipLogin {
+    right: 5em;
+    top: 5em;
+    width: 30em;
+}
+
+.tooltipOffer {
+    right: 5em;
+    top: 10em;
+    width: 30em;
 }
 
 .tooltip:hover + .tooltipText {

@@ -90,7 +90,7 @@ export function OfferList() {
                         <div className="flex justify-center items-center">
                             <Switch onClick={setSearchType}></Switch>
                             <img className="ml-10 w-10 tooltip" title="test" src={questionMark} alt="question mark" />
-                            <p className="tooltipText">
+                            <p className="tooltipText tooltipOffer">
                                 Si vous cherchez a obtenir un Pikachu, séléctionnez Pikachu dans la barre de recherche, 
                                 mettez le switch sur "Recevoir" et apparaitront les offres de gens cherchant a Envoyer un Pikachu. <br/>
                                 Les valeurs "Envoyer" et "Recevoir" sont basées sur votre point de vue, pas sur celui du créateur de l'offre 

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {validateEmail} from '../utils';
+import questionMark from '../assets/question-circle-svgrepo-com-white.svg'
+
 
 export function Header() {
 
@@ -43,6 +45,12 @@ export function Header() {
                         <Link to="/newOffer" >Nouvelle offre</Link>
                     </li>
                     <div className="m-auto mr-[30px] flex">
+                        <img className="mr-5 w-10 tooltip" title="test" src={questionMark} alt="question mark" />
+                        <p className="tooltipText tooltipLogin">
+                            La "connexion" consiste en une simple adresse email stocké dans la session, afin d'éviter d'avoir a stocker des mots de passe, 
+                            de plus l'adresse email n'est sauvegardé dans la base de donnée qu'au moment où vous créez une offre.
+                            Vous pouvez donc visualiser et répondre aux offres sans être connecté.
+                        </p>
                         {isLoggedin == "" ?
                             <button onClick={login}>Se connecter</button>
                             :
