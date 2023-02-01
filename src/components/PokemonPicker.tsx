@@ -19,15 +19,17 @@ export function PokemonPicker({ setPokemon, pokemons }: Props) {
         })
     }, [query, pokemons])
 
-    const handlePokemonPicking = (pokemon : Pokemon) => {
+    const handlePokemonPicking = (pokemon: Pokemon) => {
         setPokemon(pokemon);
         setQuery("");
     }
 
     return <div className="m-[3em]">
+
         <label>Rechercher </label>
-        <input className='border border-solid rounded' value={query} onChange={e => setQuery(e.target.value)} type="search"></input>
-        <ul className="absolute bg-white">
+        <input type="search" onChange={e => setQuery(e.target.value)} className="px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 rounded-md sm:text-sm focus:ring-1" placeholder="Pokemon" />
+
+        <ul className="absolute bg-white z-10">
             {filteredPokemons?.map(pokemon => (
                 <li key={pokemon.nationalPokedexNumber}>
                     <button className="flex border w-[20vw] hover:bg-slate-100" onClick={() => handlePokemonPicking(pokemon)}><strong className="m-auto">{pokemon.nomFrancais}</strong>  <img className="h-20 ml-auto" src={pokemon.imageUrl}></img></button>
