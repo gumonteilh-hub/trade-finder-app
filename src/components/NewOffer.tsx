@@ -17,7 +17,7 @@ export function NewOffer() {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/pokemon/')
+        fetch('https://tradefinder-production.up.railway.app/api/pokemon/')
             .then(res => res.json())
             .then(
                 (data) => {
@@ -53,7 +53,7 @@ export function NewOffer() {
                 body: JSON.stringify(offer)
             };
 
-            fetch('http://localhost:8080/api/offer/', requestOptions)
+            fetch('https://tradefinder-production.up.railway.app/api/offer/', requestOptions)
                 .then(res => res.json())
                 .then(
                     (data) => {

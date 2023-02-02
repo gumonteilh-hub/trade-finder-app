@@ -28,7 +28,7 @@ export function OfferList() {
 
     useEffect(() => {
         if (id !== undefined) {
-            fetch('http://localhost:8080/api/offer/pokemon/' + id)
+            fetch('https://tradefinder-production.up.railway.app/api/offer/pokemon/' + id)
                 .then(res => res.json())
                 .then(
                     (data) => {
@@ -44,7 +44,7 @@ export function OfferList() {
 
     useEffect(() => {
         if (pokemonFilter?.nationalPokedexNumber !== undefined) {
-            fetch('http://localhost:8080/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + searchType)
+            fetch('https://tradefinder-production.up.railway.app/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + searchType)
                 .then(res => res.json())
                 .then(
                     (data) => {
@@ -59,7 +59,7 @@ export function OfferList() {
     }, [pokemonFilter, searchType])
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/pokemon/')
+        fetch('https://tradefinder-production.up.railway.app/api/pokemon/')
             .then(res => res.json())
             .then(
                 (data) => {

@@ -12,7 +12,7 @@ export function PokemonList() {
     const [query, setQuery] = useState<string>("");
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/pokemon/')
+        fetch('https://tradefinder-production.up.railway.app/api/pokemon/')
             .then(res => res.json())
             .then(
                 (data) => {
