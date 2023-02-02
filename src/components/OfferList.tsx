@@ -6,6 +6,7 @@ import { PokemonInfo } from "./PokemonInfo";
 import { PokemonPicker } from "./PokemonPicker";
 import { Switch } from "./Switch";
 import questionMark from '../assets/question-circle-svgrepo-com-white.svg'
+import { Loading } from "./Loading";
 
 
 export function OfferList() {
@@ -13,6 +14,7 @@ export function OfferList() {
     const [offerList, setOfferList] = useState<Offer[]>();
     const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
+    const [loadingOffers, setLoadingOffers] = useState<boolean>(false);
     const [pokemonFilter, setPokemonFilter] = useState<Pokemon>();
     // false = "looking for", true = forTrade
     const [searchType, setSearchType] = useState<boolean>(false);
@@ -44,12 +46,14 @@ export function OfferList() {
 
     useEffect(() => {
         if (pokemonFilter?.nationalPokedexNumber !== undefined) {
+            setLoadingOffers(true);
             fetch('https://tradefinder-production.up.railway.app/api/offer/pokemon/' + pokemonFilter?.nationalPokedexNumber + "/" + searchType)
                 .then(res => res.json())
                 .then(
                     (data) => {
                         console.log("test 1 ")
                         setOfferList(data);
+                        setLoadingOffers(false);
                     }
                 )
                 .catch((error) => {
@@ -81,7 +85,7 @@ export function OfferList() {
         {
             loading
                 ?
-                <p>Chargement</p>
+                <Loading></Loading>
                 :
                 <>
                     <div className="grid grid-cols-3 h-[10vh]">
@@ -99,7 +103,11 @@ export function OfferList() {
                         </div>
                     </div>
                     <div className="mt-[7em] flex justify-center">
-                        {offerList && offerList.length > 0 ?
+                        {loadingOffers 
+                        ?
+                        <Loading></Loading>
+                        :
+                        offerList && offerList.length > 0 ?
                             <table className='border-separate border border-slate-500 table-auto '>
                                 <thead>
                                     <tr>

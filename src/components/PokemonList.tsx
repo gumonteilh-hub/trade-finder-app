@@ -3,6 +3,7 @@ import { Pokemon } from '../model/Pokemon';
 import '../App.css'
 import { Link } from 'react-router-dom'
 import { PokeType } from './PokeType';
+import { Loading } from './Loading';
 
 
 export function PokemonList() {
@@ -39,7 +40,7 @@ export function PokemonList() {
 
         {
             loading ?
-                <p> Chargement</p>
+                <Loading></Loading>
                 :
                 <div className='flex justify-center overflow-auto max-h-[85vh]'>
                     <table>

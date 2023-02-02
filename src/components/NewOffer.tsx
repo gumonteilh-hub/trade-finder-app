@@ -7,6 +7,7 @@ import { PokemonPicker } from './PokemonPicker';
 import { PokemonInfo } from './PokemonInfo';
 import { Offer } from '../model/Offer';
 import { validateEmail } from '../utils';
+import { Loading } from './Loading';
 
 
 export function NewOffer() {
@@ -53,7 +54,7 @@ export function NewOffer() {
                 body: JSON.stringify(offer)
             };
 
-            fetch('https://tradefinder-production.up.railway.app/api/offer/', requestOptions)
+            fetch('http://localhost:8080/api/offer/', requestOptions)
                 .then(res => res.json())
                 .then(
                     (data) => {
@@ -75,7 +76,7 @@ export function NewOffer() {
         <div className="flex">
             {loading
                 ?
-                <p>Chargement</p>
+                <Loading></Loading>
                 :
                 <>
                     <div className="flex-1">
