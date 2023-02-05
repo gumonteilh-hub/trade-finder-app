@@ -54,7 +54,7 @@ export function NewOffer() {
                 body: JSON.stringify(offer)
             };
 
-            fetch('http://localhost:8080/api/offer/', requestOptions)
+            fetch('https://tradefinder-production.up.railway.app/api/offer/', requestOptions)
                 .then(res => res.json())
                 .then(
                     (data) => {
